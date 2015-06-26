@@ -1,2 +1,2 @@
 # ProjectRush
-Future game from 2 radical guyz!
+Future game from 2 radicals guyz!
