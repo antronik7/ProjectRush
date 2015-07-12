@@ -16,8 +16,8 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		monStartCadena = Instantiate (startCadena, new Vector3 (-5.085f, 4.2f, 0f), Quaternion.identity) as GameObject;
-		monEndCadena = Instantiate (endCadena, new Vector3 (5.085f, -4.2f, 0f), Quaternion.identity) as GameObject;
+		monStartCadena = Instantiate (startCadena, new Vector3 (-4.5f, 4.5f, 0f), Quaternion.identity) as GameObject;
+		monEndCadena = Instantiate (endCadena, new Vector3 (4.5f, -4.5f, 0f), Quaternion.identity) as GameObject;
 
 		createPath();
 	}
@@ -82,6 +82,8 @@ public class GameController : MonoBehaviour {
 
 		bool continuer = true;
 
+		char lastChar = '!';
+
 		while (continuer) {
 			int randomSize = Random.Range (2, 3);
 
@@ -89,7 +91,7 @@ public class GameController : MonoBehaviour {
 			{
 				directionDispo.Add('r');
 
-				if (previousY < startY)
+				if (previousY < startY && previousX != endX - gap)
 				{
 					directionDispo.Add('u');
 				}
@@ -101,14 +103,22 @@ public class GameController : MonoBehaviour {
 			}
 
 
+			if(lastChar == 'u')
+			{
+				directionDispo.Remove('d');
+			}
+			else if(lastChar == 'd')
+			{
+				directionDispo.Remove('u');
+			}
+
 
 			int randomIndex = Random.Range (0, directionDispo.Count);
 
 			char caseSwitch = directionDispo[randomIndex];
 			Vector3 position;
 
-
-			for(int i = 0; i < randomSize - 1; i++)
+			for(int i = 0; i <= randomSize - 1; i++)
 			{
 				switch (caseSwitch)
 				{
@@ -127,11 +137,15 @@ public class GameController : MonoBehaviour {
 				}
 
 				GameObject instance = Instantiate (pathCadena, position, Quaternion.identity) as GameObject;
+				Debug.Log(caseSwitch);
 
-				if (instance.transform.position.x >= endX && instance.transform.position.y <= endY)
+				if (instance.transform.position.x > endX || instance.transform.position.y < endY)
 				{
 					Destroy(instance);
 					i = randomSize;
+				}
+				else if(instance.transform.position.x == endX && instance.transform.position.y == endY)
+				{
 					continuer = false;
 				}
 				else
@@ -140,6 +154,8 @@ public class GameController : MonoBehaviour {
 					previousY = instance.transform.position.y;
 				}
 			}
+
+			lastChar = caseSwitch;
 
 			directionDispo.Clear();
 		}
