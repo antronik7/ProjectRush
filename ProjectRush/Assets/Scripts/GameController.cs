@@ -34,22 +34,23 @@ public class GameController : MonoBehaviour {
 				}
 				else
 				{
-					Debug.Log ("Game Over");
+					Application.LoadLevel("StartScene");
 				}
 			}
 			else
 			{
-				Debug.Log ("Game Over");
+				Application.LoadLevel("StartScene");
 			}
 		}
 
 		if (minigameStart) {
 			if (hit.collider == null) {
-				Debug.Log ("Game Over");
+				Application.LoadLevel("StartScene");
 			}
 			else if (hit.collider.gameObject == monEndCadena)
 			{
-				Debug.Log ("Victoire");
+				Debug.Log("Victoire");
+				Application.LoadLevel("testCombat");
 			}
 		}
 	}
@@ -74,7 +75,7 @@ public class GameController : MonoBehaviour {
 		float endX = monEndCadena.transform.position.x;
 		float endY = monEndCadena.transform.position.y;
 
-		float startX = monStartCadena.transform.position.x;
+		//float startX = monStartCadena.transform.position.x;
 		float startY = monStartCadena.transform.position.y;
 
 		float previousX = monStartCadena.transform.position.x;
@@ -137,21 +138,22 @@ public class GameController : MonoBehaviour {
 				}
 
 				GameObject instance = Instantiate (pathCadena, position, Quaternion.identity) as GameObject;
-				Debug.Log(caseSwitch);
 
 				if (instance.transform.position.x > endX || instance.transform.position.y < endY)
 				{
 					Destroy(instance);
 					i = randomSize;
 				}
-				else if(instance.transform.position.x == endX && instance.transform.position.y == endY)
-				{
-					continuer = false;
-				}
 				else
 				{
 					previousX = instance.transform.position.x;
 					previousY = instance.transform.position.y;
+				}
+
+				if(instance.transform.position.x == endX && instance.transform.position.y == endY)
+				{
+					Destroy(instance);
+					continuer = false;
 				}
 			}
 

@@ -14,6 +14,6 @@ public class startCadenaController : MonoBehaviour {
 	}
 
 	void OnMouseUp() {
-		Debug.Log("Game Over");
+		Application.LoadLevel("StartScene");
 	}
 }
