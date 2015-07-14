@@ -53,18 +53,17 @@ public class CombatController : MonoBehaviour {
 
 	public void destroyCible()
 	{
-		Debug.Log ("Bonjour");
 		Destroy (instanceCercle);
 		Destroy (instanceCible);
 
 		compteurCibles++;
 
 		if (compteurCibles >= 10) {
+			PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score") + 1);
 			Application.LoadLevel ("MainAntoine");
 		} 
 		else {
 			createCible();
 		}
-		Debug.Log ("Au revoir");
 	}
 }

@@ -8,9 +8,11 @@ public class GameController : MonoBehaviour {
 	public GameObject startCadena;
 	public GameObject endCadena;
 	public GameObject pathCadena;
+	public GameObject bareDeTemps;
 	GameObject monStartCadena;
 	GameObject monEndCadena;
 	private List <char> directionDispo = new List<char>();
+	Vector3 pos = new Vector3 (0,0,0);
 
 	RaycastHit2D hit;
 
@@ -20,6 +22,8 @@ public class GameController : MonoBehaviour {
 		monEndCadena = Instantiate (endCadena, new Vector3 (4.5f, -4.5f, 0f), Quaternion.identity) as GameObject;
 
 		createPath();
+
+
 	}
 	
 	// Update is called once per frame
@@ -49,10 +53,15 @@ public class GameController : MonoBehaviour {
 			}
 			else if (hit.collider.gameObject == monEndCadena)
 			{
-				Debug.Log("Victoire");
+				PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score") + 1);
 				Application.LoadLevel("testCombat");
 			}
 		}
+
+		pos = bareDeTemps.transform.position;
+
+		pos.x -=Time.deltaTime* (1.2f + (PlayerPrefs.GetInt("Score") * 0.1f));
+		bareDeTemps.transform.position = pos;
 	}
 
 	void OnMouseUp() {

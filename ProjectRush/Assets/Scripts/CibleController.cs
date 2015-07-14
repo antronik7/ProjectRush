@@ -20,8 +20,12 @@ public class CibleController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		valeur = -Time.deltaTime * 1f;
+		valeur = -Time.deltaTime * (1f + ((PlayerPrefs.GetInt("Score")/2) * 0.1f));
 		this.gameObject.transform.localScale += new Vector3(valeur, valeur, 0);
+
+		if (this.gameObject.transform.localScale.x <= 0.75) {
+			Application.LoadLevel("StartScene");
+		}
 	}
 
 	void OnMouseDown()
