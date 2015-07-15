@@ -62,6 +62,10 @@ public class GameController : MonoBehaviour {
 
 		pos.x -=Time.deltaTime* (1.2f + (PlayerPrefs.GetInt("Score") * 0.1f));
 		bareDeTemps.transform.position = pos;
+
+		if (bareDeTemps.transform.position.x <= -10.0f) {
+			Application.LoadLevel("StartScene");
+		}
 	}
 
 	void OnMouseUp() {
