@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour {
 			else if (hit.collider.gameObject == monEndCadena)
 			{
 				PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score") + 1);
-				Application.LoadLevel("testCombat");
+				Application.LoadLevel("miniGamePorte");
 			}
 		}
 

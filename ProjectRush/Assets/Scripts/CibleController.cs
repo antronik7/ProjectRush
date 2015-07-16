@@ -20,10 +20,10 @@ public class CibleController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		valeur = -Time.deltaTime * (1f + ((PlayerPrefs.GetInt("Score")/2) * 0.1f));
+		valeur = -Time.deltaTime * (1.4f + ((PlayerPrefs.GetInt("Score")/2) * 0.1f));
 		this.gameObject.transform.localScale += new Vector3(valeur, valeur, 0);
 
-		if (this.gameObject.transform.localScale.x <= 0.75) {
+		if (this.gameObject.transform.localScale.x <= 1.5) {
 			Application.LoadLevel("StartScene");
 		}
 	}
@@ -32,7 +32,7 @@ public class CibleController : MonoBehaviour {
 	{
 		combatController = controller.GetComponent<CombatController>();
 
-		if(this.gameObject.transform.localScale.x < 1.25 && this.gameObject.transform.localScale.x > 0.75)
+		if(this.gameObject.transform.localScale.x < 2.1 && this.gameObject.transform.localScale.x > 1.5)
 		{
 			combatController.destroyCible();
 		}

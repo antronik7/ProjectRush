@@ -9,6 +9,8 @@ public class CombatController : MonoBehaviour {
 	public GameObject cible;
 	public int compteurCibles = 0;
 	public int penis = 69;
+	public GameObject bareDeVie;
+	Vector3 pos = new Vector3 (0,0,0);
 
 	SpriteRenderer monSprite;
 	float sizeSnakeX;
@@ -57,6 +59,11 @@ public class CombatController : MonoBehaviour {
 		Destroy (instanceCible);
 
 		compteurCibles++;
+
+		pos = bareDeVie.transform.position;
+		
+		pos.x -= 1.0f;
+		bareDeVie.transform.position = pos;
 
 		if (compteurCibles >= 10) {
 			PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score") + 1);
