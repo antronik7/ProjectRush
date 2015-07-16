@@ -17,7 +17,7 @@ public class DoorMiniGameController : MonoBehaviour {
 	
 		pos = bareDeTemps.transform.position;
 		
-		pos.x -=Time.deltaTime* (1.9f + (PlayerPrefs.GetInt("Score") * 0.1f));
+		pos.x -=Time.deltaTime* 1.75f;
 		bareDeTemps.transform.position = pos;
 		
 		if (bareDeTemps.transform.position.x <= -10.0f) {

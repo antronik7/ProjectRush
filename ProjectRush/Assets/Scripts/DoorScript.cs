@@ -7,10 +7,12 @@ public class DoorScript : MonoBehaviour {
 	Vector3 pos = new Vector3 (0,0,0);
 
 	int viePorte;
+	float divisionVie = 0f;
 
 	// Use this for initialization
 	void Start () {
-		viePorte = 25;
+		viePorte = 25 + PlayerPrefs.GetInt("Score");
+		divisionVie = 10f / viePorte;
 	}
 	
 	// Update is called once per frame
@@ -27,7 +29,7 @@ public class DoorScript : MonoBehaviour {
 
 		pos = bareDeVie.transform.position;
 		
-		pos.x -= 0.4f;
+		pos.x -= divisionVie;
 		bareDeVie.transform.position = pos;
 	}
 }
