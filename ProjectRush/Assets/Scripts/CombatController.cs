@@ -10,8 +10,9 @@ public class CombatController : MonoBehaviour {
 	public int compteurCibles = 0;
 	public int penis = 69;
 	public GameObject bareDeVie;
-	Vector3 pos = new Vector3 (0,0,0);
 
+	Animator animator;
+	Vector3 pos = new Vector3 (0,0,0);
 	SpriteRenderer monSprite;
 	float sizeSnakeX;
 	float sizeSnakeY;
@@ -28,6 +29,8 @@ public class CombatController : MonoBehaviour {
 		monSprite = snake.GetComponent<SpriteRenderer> ();
 		sizeSnakeX = monSprite.bounds.extents.x;
 		sizeSnakeY = monSprite.bounds.extents.y;
+
+		animator = snake.GetComponent<Animator> ();
 
 		createCible ();
 	}
@@ -55,6 +58,7 @@ public class CombatController : MonoBehaviour {
 
 	public void destroyCible()
 	{
+		animator.SetTrigger ("takeDamage");
 		Destroy (instanceCercle);
 		Destroy (instanceCible);
 
