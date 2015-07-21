@@ -58,6 +58,7 @@ public class CombatController : MonoBehaviour {
 
 	public void destroyCible()
 	{
+		GetComponent<AudioSource>().Play();
 		animator.SetTrigger ("takeDamage");
 		Destroy (instanceCercle);
 		Destroy (instanceCible);
