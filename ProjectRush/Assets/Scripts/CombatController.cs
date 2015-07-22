@@ -72,7 +72,7 @@ public class CombatController : MonoBehaviour {
 
 		if (compteurCibles >= 10) {
 			PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score") + 1);
-			Application.LoadLevel ("MainAntoine");
+			Application.LoadLevel ("transicion");
 		} 
 		else {
 			createCible();

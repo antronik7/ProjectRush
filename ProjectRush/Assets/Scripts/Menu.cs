@@ -33,6 +33,6 @@ public class Menu : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		Application.LoadLevel("MainAntoine");
+		Application.LoadLevel("transicion");
 	}
 }

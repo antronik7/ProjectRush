@@ -19,7 +19,7 @@ public class DoorScript : MonoBehaviour {
 	void Update () {
 		if (viePorte < 1) {
 			PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score") + 1);
-			Application.LoadLevel("testCombat");
+			Application.LoadLevel("transicion");
 		}
 	}
 
