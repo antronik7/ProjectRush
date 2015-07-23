@@ -15,7 +15,7 @@ public class CibleController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		//fuck mon streak
 	}
 	
 	// Update is called once per frame
